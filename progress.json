@@ -1,5 +1,7 @@
 {
-  "deployed": [],
-  "lastDeployed": null,
+  "deployed": [
+    "01-extensions"
+  ],
+  "lastDeployed": "2026-05-07T14:57:28.074Z",
   "note": "This file tracks which phases have been deployed. Do not edit manually."
 }

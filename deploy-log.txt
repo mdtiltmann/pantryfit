@@ -1,0 +1,7 @@
+[2026-05-07T14:57:26.899Z] PantryFit deployer starting
+[2026-05-07T14:57:26.901Z] Deploying: 01-extensions — Enable database extensions
+[2026-05-07T14:57:27.841Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T14:57:27.962Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T14:57:28.074Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T14:57:28.074Z] Done. 1/9 phases complete. 8 remaining.
+[2026-05-07T14:57:28.074Z] Next up (in 6h): Create all database tables
