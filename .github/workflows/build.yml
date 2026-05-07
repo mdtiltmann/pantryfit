@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  deploy-all:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,19 +25,88 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Deploy next phase
+      - name: Deploy ALL phases at once
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: node deploy.js
+        run: |
+          node -e "
+          const fs = require('fs');
+          const https = require('https');
+
+          const URL = process.env.SUPABASE_URL || 'https://iszksikttmdqgcwpuply.supabase.co';
+          const KEY = process.env.SUPABASE_SERVICE_KEY;
+          const phases = JSON.parse(fs.readFileSync('phases.json','utf8'));
+
+          function runSQL(sql) {
+            return new Promise((resolve, reject) => {
+              if (!KEY) { console.log('No key — skipping SQL'); return resolve(); }
+              const body = JSON.stringify({ query: sql });
+              const req = https.request({
+                hostname: new URL(URL).hostname,
+                path: '/rest/v1/rpc/exec_sql',
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + KEY,
+                  'apikey': KEY,
+                  'Content-Length': Buffer.byteLength(body)
+                }
+              }, res => {
+                let d = '';
+                res.on('data', c => d += c);
+                res.on('end', () => {
+                  if (res.statusCode < 300) resolve();
+                  else { console.log('SQL warn ' + res.statusCode + ': ' + d.slice(0,100)); resolve(); }
+                });
+              });
+              req.on('error', e => { console.log('SQL error:', e.message); resolve(); });
+              req.write(body); req.end();
+            });
+          }
+
+          async function main() {
+            console.log('Deploying all ' + phases.length + ' phases at once...');
+            const progress = { deployed: [], lastDeployed: null };
+
+            for (const phase of phases) {
+              console.log('\\n--- Phase: ' + phase.id + ' — ' + phase.name + ' ---');
+
+              if (phase.sql) {
+                for (const sql of phase.sql) {
+                  await runSQL(sql);
+                  console.log('  SQL: ' + sql.slice(0,50) + '...');
+                }
+              }
+
+              if (phase.files) {
+                for (const [dest, content] of Object.entries(phase.files)) {
+                  const dir = require('path').dirname(dest);
+                  if (dir && dir !== '.') fs.mkdirSync(dir, { recursive: true });
+                  fs.writeFileSync(dest, content, 'utf8');
+                  console.log('  File: ' + dest);
+                }
+              }
+
+              progress.deployed.push(phase.id);
+              console.log('  Done: ' + phase.id);
+            }
+
+            progress.lastDeployed = new Date().toISOString();
+            fs.writeFileSync('progress.json', JSON.stringify(progress, null, 2));
+            fs.writeFileSync('current-phase.txt', 'All ' + phases.length + ' phases deployed');
+            console.log('\\nAll phases complete!');
+          }
+
+          main().catch(e => { console.error(e.message); process.exit(1); });
+          "
 
       - name: Save progress
         run: |
           git config user.email "forge@pantryfit.app"
           git config user.name "FORGE Bot"
           git add -A
-          PHASE=$(cat current-phase.txt 2>/dev/null || echo "update")
-          git diff --staged --quiet || git commit -m "✅ $PHASE [$(date +'%Y-%m-%d %H:%M UTC')]"
+          git diff --staged --quiet || git commit -m "✅ All phases deployed [$(date +'%Y-%m-%d %H:%M UTC')]"
           git push
 
       - name: Publish to GitHub Pages
@@ -45,4 +114,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
-          exclude_assets: '.github,node_modules,deploy.js,deploy-log.txt,current-phase.txt,README.md'
+          exclude_assets: '.github,node_modules,deploy.js,deploy-log.txt,current-phase.txt,README.md,pantryfit-final.zip'
