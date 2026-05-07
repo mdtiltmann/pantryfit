@@ -1,0 +1,48 @@
+name: PantryFit Builder
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Deploy next phase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node deploy.js
+
+      - name: Save progress
+        run: |
+          git config user.email "forge@pantryfit.app"
+          git config user.name "FORGE Bot"
+          git add -A
+          PHASE=$(cat current-phase.txt 2>/dev/null || echo "update")
+          git diff --staged --quiet || git commit -m "✅ $PHASE [$(date +'%Y-%m-%d %H:%M UTC')]"
+          git push
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          exclude_assets: '.github,node_modules,deploy.js,deploy-log.txt,current-phase.txt,README.md'
