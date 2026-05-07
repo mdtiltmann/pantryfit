@@ -1,117 +1,110 @@
-name: PantryFit Builder
+/**
+ * deploy-all.js — PantryFit full deployer
+ * Runs all phases in phases.json in one go.
+ * Fixed: Node 24 compatible, no CLI args needed.
+ */
 
-on:
-  schedule:
-    - cron: '0 */6 * * *'
-  workflow_dispatch:
+const fs    = require('fs')
+const https = require('https')
+const path  = require('path')
 
-jobs:
-  deploy-all:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://iszksikttmdqgcwpuply.supabase.co'
+const SERVICE_KEY  = process.env.SUPABASE_SERVICE_KEY
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+function log(msg) {
+  const line = `[${new Date().toISOString()}] ${msg}`
+  console.log(line)
+  fs.appendFileSync('deploy-log.txt', line + '\n')
+}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+function runSQL(sql) {
+  return new Promise((resolve) => {
+    if (!SERVICE_KEY) {
+      log('  No SUPABASE_SERVICE_KEY — add it to GitHub Secrets')
+      return resolve()
+    }
+    const body = JSON.stringify({ query: sql })
+    const hostname = new URL(SUPABASE_URL).hostname
+    const req = https.request({
+      hostname,
+      path: '/rest/v1/rpc/exec_sql',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${SERVICE_KEY}`,
+        'apikey': SERVICE_KEY,
+        'Content-Length': Buffer.byteLength(body)
+      }
+    }, res => {
+      let d = ''
+      res.on('data', c => d += c)
+      res.on('end', () => {
+        if (res.statusCode < 300) {
+          log(`  SQL OK`)
+        } else {
+          log(`  SQL note (${res.statusCode}): ${d.slice(0, 120)}`)
+        }
+        resolve()
+      })
+    })
+    req.on('error', e => { log(`  SQL error: ${e.message}`); resolve() })
+    req.write(body)
+    req.end()
+  })
+}
 
-      - name: Deploy ALL phases at once
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: |
-          node -e "
-          const fs = require('fs');
-          const https = require('https');
+async function main() {
+  log('PantryFit — deploying ALL phases')
+  log(`Supabase: ${SUPABASE_URL}`)
 
-          const URL = process.env.SUPABASE_URL || 'https://iszksikttmdqgcwpuply.supabase.co';
-          const KEY = process.env.SUPABASE_SERVICE_KEY;
-          const phases = JSON.parse(fs.readFileSync('phases.json','utf8'));
+  // Load phases
+  if (!fs.existsSync('phases.json')) {
+    log('ERROR: phases.json not found in repo root')
+    process.exit(1)
+  }
 
-          function runSQL(sql) {
-            return new Promise((resolve, reject) => {
-              if (!KEY) { console.log('No key — skipping SQL'); return resolve(); }
-              const body = JSON.stringify({ query: sql });
-              const req = https.request({
-                hostname: new URL(URL).hostname,
-                path: '/rest/v1/rpc/exec_sql',
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + KEY,
-                  'apikey': KEY,
-                  'Content-Length': Buffer.byteLength(body)
-                }
-              }, res => {
-                let d = '';
-                res.on('data', c => d += c);
-                res.on('end', () => {
-                  if (res.statusCode < 300) resolve();
-                  else { console.log('SQL warn ' + res.statusCode + ': ' + d.slice(0,100)); resolve(); }
-                });
-              });
-              req.on('error', e => { console.log('SQL error:', e.message); resolve(); });
-              req.write(body); req.end();
-            });
-          }
+  const phases = JSON.parse(fs.readFileSync('phases.json', 'utf8'))
+  log(`Found ${phases.length} phases to deploy`)
 
-          async function main() {
-            console.log('Deploying all ' + phases.length + ' phases at once...');
-            const progress = { deployed: [], lastDeployed: null };
+  const progress = { deployed: [], lastDeployed: null }
 
-            for (const phase of phases) {
-              console.log('\\n--- Phase: ' + phase.id + ' — ' + phase.name + ' ---');
+  for (const phase of phases) {
+    log(`\n=== ${phase.id}: ${phase.name} ===`)
 
-              if (phase.sql) {
-                for (const sql of phase.sql) {
-                  await runSQL(sql);
-                  console.log('  SQL: ' + sql.slice(0,50) + '...');
-                }
-              }
+    // Run SQL statements
+    if (phase.sql && phase.sql.length > 0) {
+      log(`  Running ${phase.sql.length} SQL statement(s)...`)
+      for (const sql of phase.sql) {
+        await runSQL(sql)
+      }
+    }
 
-              if (phase.files) {
-                for (const [dest, content] of Object.entries(phase.files)) {
-                  const dir = require('path').dirname(dest);
-                  if (dir && dir !== '.') fs.mkdirSync(dir, { recursive: true });
-                  fs.writeFileSync(dest, content, 'utf8');
-                  console.log('  File: ' + dest);
-                }
-              }
+    // Write files
+    if (phase.files) {
+      for (const [dest, content] of Object.entries(phase.files)) {
+        const dir = path.dirname(dest)
+        if (dir && dir !== '.') {
+          fs.mkdirSync(dir, { recursive: true })
+        }
+        fs.writeFileSync(dest, content, 'utf8')
+        log(`  Written: ${dest} (${content.length} chars)`)
+      }
+    }
 
-              progress.deployed.push(phase.id);
-              console.log('  Done: ' + phase.id);
-            }
+    progress.deployed.push(phase.id)
+    log(`  Completed: ${phase.id}`)
+  }
 
-            progress.lastDeployed = new Date().toISOString();
-            fs.writeFileSync('progress.json', JSON.stringify(progress, null, 2));
-            fs.writeFileSync('current-phase.txt', 'All ' + phases.length + ' phases deployed');
-            console.log('\\nAll phases complete!');
-          }
+  // Save progress
+  progress.lastDeployed = new Date().toISOString()
+  fs.writeFileSync('progress.json', JSON.stringify(progress, null, 2))
+  fs.writeFileSync('current-phase.txt', `All ${phases.length} phases deployed`)
 
-          main().catch(e => { console.error(e.message); process.exit(1); });
-          "
+  log(`\nAll ${phases.length} phases complete!`)
+  log(`Deployed: ${progress.deployed.join(', ')}`)
+}
 
-      - name: Save progress
-        run: |
-          git config user.email "forge@pantryfit.app"
-          git config user.name "FORGE Bot"
-          git add -A
-          git diff --staged --quiet || git commit -m "✅ All phases deployed [$(date +'%Y-%m-%d %H:%M UTC')]"
-          git push
-
-      - name: Publish to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          exclude_assets: '.github,node_modules,deploy.js,deploy-log.txt,current-phase.txt,README.md,pantryfit-final.zip'
+main().catch(e => {
+  console.error('Fatal error:', e.message)
+  process.exit(1)
+})
