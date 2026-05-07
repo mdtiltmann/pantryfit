@@ -1,1 +1,1 @@
-02-tables: Create all database tables
+03-functions: Create database functions and triggers

@@ -26,3 +26,14 @@
 [2026-05-07T14:59:04.735Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
 [2026-05-07T14:59:04.736Z] Done. 2/9 phases complete. 7 remaining.
 [2026-05-07T14:59:04.736Z] Next up (in 6h): Create database functions and triggers
+[2026-05-07T15:07:50.249Z] PantryFit deployer starting
+[2026-05-07T15:07:50.252Z] Deploying: 03-functions — Create database functions and triggers
+[2026-05-07T15:07:51.106Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T15:07:51.229Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T15:07:51.348Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T15:07:51.467Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T15:07:51.585Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T15:07:51.703Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T15:07:51.832Z]   SQL error: SQL error 404: {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,
+[2026-05-07T15:07:51.832Z] Done. 3/9 phases complete. 6 remaining.
+[2026-05-07T15:07:51.832Z] Next up (in 6h): Set up data security
