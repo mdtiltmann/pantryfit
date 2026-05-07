@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="40" fill="#1A3320"/>
+  <rect width="192" height="192" rx="40" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="192" y2="192" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1A3320"/>
+      <stop offset="100%" stop-color="#0D1F14"/>
+    </linearGradient>
+  </defs>
+  <!-- Plate circle -->
+  <circle cx="96" cy="100" r="52" fill="none" stroke="rgba(109,191,138,0.25)" stroke-width="3"/>
+  <!-- Fork left -->
+  <rect x="52" y="56" width="3" height="32" rx="1.5" fill="#6DBF8A"/>
+  <rect x="48" y="56" width="3" height="20" rx="1.5" fill="#6DBF8A"/>
+  <rect x="56" y="56" width="3" height="20" rx="1.5" fill="#6DBF8A"/>
+  <rect x="50" y="72" width="8" height="16" rx="1.5" fill="#6DBF8A"/>
+  <!-- Knife right -->
+  <rect x="138" y="56" width="3" height="48" rx="1.5" fill="#6DBF8A"/>
+  <path d="M138 56 Q145 68 141 76 L138 76 Z" fill="#6DBF8A"/>
+  <!-- Leaf / plant in plate -->
+  <ellipse cx="96" cy="97" rx="18" ry="14" fill="#3D7A52"/>
+  <ellipse cx="84" cy="104" rx="10" ry="8" fill="#4A9060" transform="rotate(-20,84,104)"/>
+  <ellipse cx="108" cy="104" rx="10" ry="8" fill="#4A9060" transform="rotate(20,108,104)"/>
+  <circle cx="96" cy="96" r="5" fill="#6DBF8A"/>
+  <!-- PF text -->
+  <text x="96" y="155" font-family="Georgia,serif" font-size="18" font-weight="700" fill="rgba(109,191,138,0.9)" text-anchor="middle" letter-spacing="2">PANTRYFIT</text>
+</svg>

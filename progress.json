@@ -2,8 +2,13 @@
   "deployed": [
     "01-extensions",
     "02-tables",
-    "03-functions"
+    "03-functions",
+    "04-security",
+    "05-cron-jobs",
+    "06-realtime",
+    "07-recipes",
+    "08-aliases",
+    "09-web-deploy"
   ],
-  "lastDeployed": "2026-05-07T15:07:51.832Z",
-  "note": "This file tracks which phases have been deployed. Do not edit manually."
+  "lastDeployed": "2026-05-07T15:29:16.091Z"
 }
