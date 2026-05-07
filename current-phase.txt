@@ -1,1 +1,1 @@
-01-extensions: Enable database extensions
+02-tables: Create all database tables
