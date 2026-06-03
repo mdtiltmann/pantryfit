@@ -6475,3 +6475,90 @@ All 9 phases complete!
 [2026-06-03T03:32:22.378Z] 
 All 9 phases complete!
 [2026-06-03T03:32:22.379Z] Deployed: 01-extensions, 02-tables, 03-functions, 04-security, 05-cron-jobs, 06-realtime, 07-recipes, 08-aliases, 09-web-deploy
+[2026-06-03T10:48:26.837Z] PantryFit — deploying ALL phases
+[2026-06-03T10:48:26.839Z] Supabase: https://iszksikttmdqgcwpuply.supabase.co
+[2026-06-03T10:48:26.839Z] Found 9 phases to deploy
+[2026-06-03T10:48:26.839Z] 
+=== 01-extensions: Enable database extensions ===
+[2026-06-03T10:48:26.839Z]   Running 3 SQL statement(s)...
+[2026-06-03T10:48:27.875Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:27.999Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.119Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.119Z]   Completed: 01-extensions
+[2026-06-03T10:48:28.119Z] 
+=== 02-tables: Create all database tables ===
+[2026-06-03T10:48:28.119Z]   Running 17 SQL statement(s)...
+[2026-06-03T10:48:28.234Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.356Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.472Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.591Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.708Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.826Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:28.943Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.058Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.174Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.290Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.404Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.523Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.636Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.751Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.865Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:29.983Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.100Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.100Z]   Completed: 02-tables
+[2026-06-03T10:48:30.100Z] 
+=== 03-functions: Create database functions and triggers ===
+[2026-06-03T10:48:30.100Z]   Running 7 SQL statement(s)...
+[2026-06-03T10:48:30.215Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.331Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.446Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.563Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.677Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.790Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.905Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:30.905Z]   Completed: 03-functions
+[2026-06-03T10:48:30.905Z] 
+=== 04-security: Set up data security ===
+[2026-06-03T10:48:30.905Z]   Running 2 SQL statement(s)...
+[2026-06-03T10:48:31.020Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.139Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.140Z]   Completed: 04-security
+[2026-06-03T10:48:31.140Z] 
+=== 05-cron-jobs: Start 6 background jobs ===
+[2026-06-03T10:48:31.140Z]   Running 6 SQL statement(s)...
+[2026-06-03T10:48:31.253Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.372Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.488Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.602Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.718Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.834Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:31.834Z]   Completed: 05-cron-jobs
+[2026-06-03T10:48:31.834Z] 
+=== 06-realtime: Enable live sync between devices ===
+[2026-06-03T10:48:31.834Z]   Running 5 SQL statement(s)...
+[2026-06-03T10:48:31.948Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:32.062Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:32.179Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:32.300Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:32.415Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:32.416Z]   Completed: 06-realtime
+[2026-06-03T10:48:32.416Z] 
+=== 07-recipes: Add 50 recipes to the database ===
+[2026-06-03T10:48:32.416Z]   Running 1 SQL statement(s)...
+[2026-06-03T10:48:32.548Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:32.549Z]   Completed: 07-recipes
+[2026-06-03T10:48:32.549Z] 
+=== 08-aliases: Add ingredient matching data ===
+[2026-06-03T10:48:32.549Z]   Running 1 SQL statement(s)...
+[2026-06-03T10:48:32.663Z]   SQL note (404): {"code":"PGRST202","details":"Searched for the function public.exec_sql with parameter query or with a single unnamed js
+[2026-06-03T10:48:32.663Z]   Completed: 08-aliases
+[2026-06-03T10:48:32.663Z] 
+=== 09-web-deploy: Deploy as installable web app ===
+[2026-06-03T10:48:32.663Z]   Written: manifest.json (648 chars)
+[2026-06-03T10:48:32.664Z]   Written: sw.js (1598 chars)
+[2026-06-03T10:48:32.664Z]   Written: icon-192.svg (1506 chars)
+[2026-06-03T10:48:32.664Z]   Written: icon-512.svg (1506 chars)
+[2026-06-03T10:48:32.664Z]   Completed: 09-web-deploy
+[2026-06-03T10:48:32.664Z] 
+All 9 phases complete!
+[2026-06-03T10:48:32.664Z] Deployed: 01-extensions, 02-tables, 03-functions, 04-security, 05-cron-jobs, 06-realtime, 07-recipes, 08-aliases, 09-web-deploy
