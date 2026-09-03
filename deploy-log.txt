@@ -37882,3 +37882,90 @@ All 9 phases complete!
 [2026-09-02T20:23:12.038Z] 
 All 9 phases complete!
 [2026-09-02T20:23:12.038Z] Deployed: 01-extensions, 02-tables, 03-functions, 04-security, 05-cron-jobs, 06-realtime, 07-recipes, 08-aliases, 09-web-deploy
+[2026-09-03T02:29:51.535Z] PantryFit — deploying ALL phases
+[2026-09-03T02:29:51.536Z] Supabase: https://iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.537Z] Found 9 phases to deploy
+[2026-09-03T02:29:51.537Z] 
+=== 01-extensions: Enable database extensions ===
+[2026-09-03T02:29:51.537Z]   Running 3 SQL statement(s)...
+[2026-09-03T02:29:51.605Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.622Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.639Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.640Z]   Completed: 01-extensions
+[2026-09-03T02:29:51.640Z] 
+=== 02-tables: Create all database tables ===
+[2026-09-03T02:29:51.640Z]   Running 17 SQL statement(s)...
+[2026-09-03T02:29:51.651Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.662Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.683Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.687Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.698Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.707Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.711Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.716Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.725Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.729Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.741Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.749Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.765Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.788Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.793Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.802Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.806Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.806Z]   Completed: 02-tables
+[2026-09-03T02:29:51.806Z] 
+=== 03-functions: Create database functions and triggers ===
+[2026-09-03T02:29:51.806Z]   Running 7 SQL statement(s)...
+[2026-09-03T02:29:51.810Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.814Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.818Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.822Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.833Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.837Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.841Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.841Z]   Completed: 03-functions
+[2026-09-03T02:29:51.841Z] 
+=== 04-security: Set up data security ===
+[2026-09-03T02:29:51.841Z]   Running 2 SQL statement(s)...
+[2026-09-03T02:29:51.845Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.849Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.849Z]   Completed: 04-security
+[2026-09-03T02:29:51.849Z] 
+=== 05-cron-jobs: Start 6 background jobs ===
+[2026-09-03T02:29:51.849Z]   Running 6 SQL statement(s)...
+[2026-09-03T02:29:51.854Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.859Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.862Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.865Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.869Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.877Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.877Z]   Completed: 05-cron-jobs
+[2026-09-03T02:29:51.877Z] 
+=== 06-realtime: Enable live sync between devices ===
+[2026-09-03T02:29:51.877Z]   Running 5 SQL statement(s)...
+[2026-09-03T02:29:51.881Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.886Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.890Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.894Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.898Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.898Z]   Completed: 06-realtime
+[2026-09-03T02:29:51.898Z] 
+=== 07-recipes: Add 50 recipes to the database ===
+[2026-09-03T02:29:51.898Z]   Running 1 SQL statement(s)...
+[2026-09-03T02:29:51.903Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.903Z]   Completed: 07-recipes
+[2026-09-03T02:29:51.903Z] 
+=== 08-aliases: Add ingredient matching data ===
+[2026-09-03T02:29:51.903Z]   Running 1 SQL statement(s)...
+[2026-09-03T02:29:51.914Z]   SQL error: getaddrinfo ENOTFOUND iszksikttmdqgcwpuply.supabase.co
+[2026-09-03T02:29:51.914Z]   Completed: 08-aliases
+[2026-09-03T02:29:51.914Z] 
+=== 09-web-deploy: Deploy as installable web app ===
+[2026-09-03T02:29:51.914Z]   Written: manifest.json (648 chars)
+[2026-09-03T02:29:51.915Z]   Written: sw.js (1598 chars)
+[2026-09-03T02:29:51.915Z]   Written: icon-192.svg (1506 chars)
+[2026-09-03T02:29:51.915Z]   Written: icon-512.svg (1506 chars)
+[2026-09-03T02:29:51.915Z]   Completed: 09-web-deploy
+[2026-09-03T02:29:51.915Z] 
+All 9 phases complete!
+[2026-09-03T02:29:51.915Z] Deployed: 01-extensions, 02-tables, 03-functions, 04-security, 05-cron-jobs, 06-realtime, 07-recipes, 08-aliases, 09-web-deploy
